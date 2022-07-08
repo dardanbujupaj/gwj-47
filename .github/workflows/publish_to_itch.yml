@@ -1,0 +1,60 @@
+# Pushes the released game exports created in create_release.yml to itch.io
+
+on:
+  release:
+    types: [published]
+    
+env:
+  # Version of the itch butler cli used to push
+  BUTLER_VERSION: 15.21.0
+  # Prefix of the release asset (zip files) -> has to match with the one from create_release.yml
+  PACKAGE_PREFIX: ${{ github.event.repository.name }} # use gh repository name
+  # Game title (url) on itch page
+  GAME_TITLE: ${{ github.event.repository.name }} # use gh repository name
+  # Username on itch
+  ITCH_USER: ${{ github.repository_owner }}
+  VERSION: ${{github.event.release.tag_name}}
+
+jobs:
+  publish_to_itch:
+    strategy:
+      matrix:
+        target: [html, windows, macos, linux]
+    runs-on: ubuntu-latest
+    steps:
+      # checkout repo, so that gh cli works correctly
+      - name: checkout
+        uses: actions/checkout@v2
+        
+      # download asset for effective 
+      - run: gh release download ${{ env.VERSION }} -p "${FILE}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FILE: ${{ env.PACKAGE_PREFIX }}-${{ env.VERSION }}-${{matrix.target}}.zip
+
+      # download specified butler version
+      - name: setup butler
+        id: setup-butler
+        run: |
+          curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/${BUTLER_VERSION}/archive/default
+          unzip butler.zip
+          # GNU unzip tends to not set the executable bit even though it's set in the .zip
+          chmod +x butler
+          # just a sanity check run (and also helpful in case you're sharing CI logs)
+          ./butler -V
+        env:
+          BUTLER_VERSION: ${{env.BUTLER_VERSION}}
+
+      - name: deploy to itch.io
+        id: deploy
+        run: |
+          ls -lah
+          echo ${{ env.VERSION }}
+          ./butler push "${FILE}" "${ITCH_USER}/${ITCH_GAME}:${CHANNEL}" --userversion ${{ env.VERSION }}
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: ${{ matrix.TARGET }}
+          ITCH_GAME: ${{ env.GAME_TITLE }}
+          ITCH_USER: ${{ env.ITCH_USER }}
+          FILE: ${{ env.PACKAGE_PREFIX }}-${{ env.VERSION }}-${{matrix.target}}.zip
+      
