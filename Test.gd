@@ -30,8 +30,10 @@ func switch_world() -> void:
 	down = !down
 	
 	if $LowerWorld/Character != manifested_character:
+		tween.interpolate_property($LowerWorld/AudioStreamPlayer, "volume_db", $LowerWorld/AudioStreamPlayer.volume_db, linear2db(1.0 if down else 0.2), 0.5)
 		$LowerWorld/Character.active = down
 	if $UpperWorld/Character != manifested_character:
+		tween.interpolate_property($UpperWorld/AudioStreamPlayer, "volume_db", $UpperWorld/AudioStreamPlayer.volume_db, linear2db(0.2 if down else 1.0), 0.5)
 		$UpperWorld/Character.active = !down
 	
 	var screen = Vector2(1920, 1080)
