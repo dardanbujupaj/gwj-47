@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://RigidTile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Character.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Tile.png" type="Texture" id=5]
 [ext_resource path="res://Untitled.png" type="Texture" id=6]
 [ext_resource path="res://Tileset_01.png" type="Texture" id=7]
+[ext_resource path="res://upper.wav" type="AudioStream" id=8]
+[ext_resource path="res://lower.wav" type="AudioStream" id=9]
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0 )
@@ -83,6 +85,10 @@ tile_data = PoolIntArray( -1507328, 3, 0, -1507327, 3, 0, -1507326, 3, 0, -15073
 [node name="Character" parent="UpperWorld" instance=ExtResource( 2 )]
 position = Vector2( 215, -108 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UpperWorld"]
+stream = ExtResource( 8 )
+autoplay = true
+
 [node name="LowerWorld" type="TileMap" parent="."]
 scale = Vector2( 1, -1 )
 tile_set = SubResource( 1 )
@@ -94,6 +100,10 @@ tile_data = PoolIntArray( -1507328, 3, 0, -1507327, 3, 0, -1507326, 3, 0, -15073
 [node name="Character" parent="LowerWorld" instance=ExtResource( 2 )]
 position = Vector2( 197, -777 )
 scale = Vector2( 1, -1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="LowerWorld"]
+stream = ExtResource( 9 )
+autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 960, 540 )
