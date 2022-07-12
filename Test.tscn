@@ -1,12 +1,16 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Character.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Test.gd" type="Script" id=3]
 [ext_resource path="res://Manifestation.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Tile.png" type="Texture" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="TileSet" id=1]
 0/name = "icon.png 0"
@@ -30,25 +34,52 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
+1/name = "Tile.png 1"
+1/texture = ExtResource( 5 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 16, 16 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 3 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
 
 [node name="Test" type="Node2D"]
 script = ExtResource( 3 )
 
 [node name="UpperWorld" type="TileMap" parent="."]
-scale = Vector2( 1, -1 )
+scale = Vector2( 4, 4 )
 tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 format = 1
-tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 65536, 0, 0, 65551, 0, 0, 131072, 0, 0, 131087, 0, 0, 196608, 0, 0, 196623, 0, 0, 262144, 0, 0, 262159, 0, 0, 327680, 0, 0, 327695, 0, 0, 393216, 0, 0, 393231, 0, 0, 458752, 0, 0, 458767, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0 )
+tile_data = PoolIntArray( -720896, 1, 0, -720895, 1, 0, -720894, 1, 0, -720893, 1, 0, -720892, 1, 0, -720891, 1, 0, -720890, 1, 0, -720889, 1, 0, -720888, 1, 0, -720887, 1, 0, -720886, 1, 0, -720885, 1, 0, -720884, 1, 0, -720883, 1, 0, -720882, 1, 0, -720881, 1, 0, -720880, 1, 0, -720879, 1, 0, -720878, 1, 0, -720877, 1, 0, -655360, 1, 0, -655341, 1, 0, -589824, 1, 0, -589805, 1, 0, -524288, 1, 0, -524269, 1, 0, -458752, 1, 0, -458733, 1, 0, -393216, 1, 0, -393197, 1, 0, -327680, 1, 0, -327661, 1, 0, -262144, 1, 0, -262125, 1, 0, -196608, 1, 0, -196589, 1, 0, -131072, 1, 0, -131053, 1, 0, -65536, 1, 0, -65535, 1, 0, -65534, 1, 0, -65533, 1, 0, -65532, 1, 0, -65531, 1, 0, -65530, 1, 0, -65529, 1, 0, -65528, 1, 0, -65527, 1, 0, -65526, 1, 0, -65525, 1, 0, -65524, 1, 0, -65523, 1, 0, -65522, 1, 0, -65521, 1, 0, -65520, 1, 0, -65519, 1, 0, -65518, 1, 0, -65517, 1, 0 )
 
 [node name="Character" parent="UpperWorld" instance=ExtResource( 2 )]
+position = Vector2( 54.75, -37.5 )
 
 [node name="LowerWorld" type="TileMap" parent="."]
+scale = Vector2( 4, -4 )
 tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 format = 1
-tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 65536, 0, 0, 65551, 0, 0, 131072, 0, 0, 131087, 0, 0, 196608, 0, 0, 196623, 0, 0, 262144, 0, 0, 262159, 0, 0, 327680, 0, 0, 327695, 0, 0, 393216, 0, 0, 393231, 0, 0, 458752, 0, 0, 458767, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0 )
+tile_data = PoolIntArray( -720896, 1, 0, -720895, 1, 0, -720894, 1, 0, -720893, 1, 0, -720892, 1, 0, -720891, 1, 0, -720890, 1, 0, -720889, 1, 0, -720888, 1, 0, -720887, 1, 0, -720886, 1, 0, -720885, 1, 0, -720884, 1, 0, -720883, 1, 0, -720882, 1, 0, -720881, 1, 0, -720880, 1, 0, -720879, 1, 0, -720878, 1, 0, -720877, 1, 0, -655360, 1, 0, -655341, 1, 0, -589824, 1, 0, -589805, 1, 0, -524288, 1, 0, -524269, 1, 0, -458752, 1, 0, -458733, 1, 0, -393216, 1, 0, -393197, 1, 0, -327680, 1, 0, -327661, 1, 0, -262144, 1, 0, -262125, 1, 0, -196608, 1, 0, -196589, 1, 0, -131072, 1, 0, -131053, 1, 0, -65536, 1, 0, -65535, 1, 0, -65534, 1, 0, -65533, 1, 0, -65532, 1, 0, -65531, 1, 0, -65530, 1, 0, -65529, 1, 0, -65528, 1, 0, -65527, 1, 0, -65526, 1, 0, -65525, 1, 0, -65524, 1, 0, -65523, 1, 0, -65522, 1, 0, -65521, 1, 0, -65520, 1, 0, -65519, 1, 0, -65518, 1, 0, -65517, 1, 0 )
 
 [node name="Character" parent="LowerWorld" instance=ExtResource( 2 )]
-position = Vector2( 105, 482 )
+position = Vector2( 89.25, -118 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -56,3 +87,4 @@ current = true
 [node name="Tween" type="Tween" parent="."]
 
 [node name="Manifestation" parent="." instance=ExtResource( 4 )]
+scale = Vector2( 4, 4 )
