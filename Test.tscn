@@ -72,7 +72,6 @@ script = ExtResource( 3 )
 
 [node name="RigidTile" parent="." instance=ExtResource( 1 )]
 position = Vector2( 677, -107 )
-scale = Vector2( 4, 4 )
 
 [node name="UpperWorld" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
@@ -94,6 +93,7 @@ tile_data = PoolIntArray( -1507328, 3, 0, -1507327, 3, 0, -1507326, 3, 0, -15073
 
 [node name="Character" parent="LowerWorld" instance=ExtResource( 2 )]
 position = Vector2( 197, -777 )
+scale = Vector2( 1, -1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 960, 540 )
@@ -107,15 +107,15 @@ position = Vector2( -237, -1 )
 [node name="MovableTile" type="StaticBody2D" parent="."]
 
 [node name="Untitled" type="Sprite" parent="."]
-modulate = Color( 0.360784, 0.678431, 0.584314, 0.611765 )
-position = Vector2( 969.75, -638.5 )
-scale = Vector2( 0.808417, 0.753597 )
+modulate = Color( 0.360784, 0.678431, 0.584314, 0.501961 )
+position = Vector2( 960, -658 )
+scale = Vector2( 0.8, 0.8 )
 z_index = -1
 texture = ExtResource( 6 )
 
 [node name="Untitled2" type="Sprite" parent="."]
-modulate = Color( 1, 0.411765, 0.411765, 1 )
-position = Vector2( 964, 628 )
-scale = Vector2( 0.808, -0.754 )
+modulate = Color( 1, 0.411765, 0.411765, 0.501961 )
+position = Vector2( 955, 665 )
+scale = Vector2( 0.8, -0.8 )
 z_index = -1
 texture = ExtResource( 6 )

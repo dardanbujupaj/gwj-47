@@ -21,6 +21,7 @@ var velocity: Vector2
 var active: bool = false
 
 var transformed = false
+var manifestation: Node2D
 
 onready var animation_tree := $AnimationTree
 onready var state_machine := $AnimationTree["parameters/playback"] as AnimationNodeStateMachinePlayback
@@ -33,11 +34,16 @@ func _ready() -> void:
 	start_position = position
 
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	
-	
 	if not active:
+		return
+	
+	if Input.is_action_just_pressed("transform"):
+		transform()
+	
+	if transformed:
 		return
 	
 	if can_jump():
@@ -94,8 +100,18 @@ func can_jump():
 	
 
 func transform() -> void:
-	state_machine.travel("transform")
-	transformed = true
+	if transformed:
+		state_machine.travel("transform_back")
+		transformed = false
+		manifestation.queue_free()
+		manifestation = null
+	else:
+		state_machine.travel("transform")
+		transformed = true
+		velocity = Vector2()
+		manifestation = preload("res://Manifestation.tscn").instance()
+		add_child(manifestation)
+		manifestation.global_position = global_position * Vector2(1, -1)
 
 
 func _on_SoundTimer_timeout() -> void:

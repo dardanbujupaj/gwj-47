@@ -21,19 +21,7 @@ func _ready() -> void:
 func _unhandled_input(event):
 	if event.is_action("switch") and event.is_pressed():
 		switch_world()
-	if event.is_action("manifest") and event.is_pressed():
-		var current_character = $LowerWorld/Character if down else $UpperWorld/Character
-		if manifested_character == null or manifested_character == current_character:
-			if current_character.active:
-				current_character.active = false
-				manifested_character = current_character
-				manifestation.global_position = current_character.global_position * Vector2(1, -1)
-				manifested_character.modulate = Color.gray
-			else:
-				manifested_character.modulate = Color.white
-				current_character.active = true
-				manifested_character = null
-				manifestation.global_position = Vector2.LEFT * 10000
+	
 
 
 func switch_world() -> void:
