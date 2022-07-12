@@ -1,16 +1,16 @@
 extends KinematicBody2D
 
 
-const ACCELERATION = 1000
-const DECCELERATION = 2000
+const ACCELERATION = 2400
+const DECCELERATION = 4800
 
-const MAX_SPEED = 250
+const MAX_SPEED = 1000
 
-const JUMP_STRENGTH = 300
+const JUMP_STRENGTH = 1000
 
-const JUMP_GRAVITY = 500
-const RAISE_GRAVITY = 1500
-const FALL_GRAVITY = 3000
+const JUMP_GRAVITY = 1000
+const RAISE_GRAVITY = 2000
+const FALL_GRAVITY = 4000
 
 
 var start_position: Vector2
@@ -20,8 +20,10 @@ var velocity: Vector2
 
 var active: bool = false
 
-#onready var animation_tree := $AnimationTree
-#onready var state_machine := $AnimationTree["parameters/playback"] as AnimationNodeStateMachinePlayback
+var transformed = false
+
+onready var animation_tree := $AnimationTree
+onready var state_machine := $AnimationTree["parameters/playback"] as AnimationNodeStateMachinePlayback
 
 #onready var hit_area = $HitArea
 
@@ -34,6 +36,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	
+	
 	if not active:
 		return
 	
@@ -42,6 +45,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y -= JUMP_STRENGTH
 	
 	if velocity.y < 0:
+		
 		if Input.is_action_pressed("up"):
 			velocity.y += JUMP_GRAVITY * delta
 		else:
@@ -54,7 +58,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 	if abs(horizontal_input) > 0:
-		# $Sprites.scale.x = horizontal_input
+		$Character.flip_h = horizontal_input < 0
 		
 		if abs(velocity.x) != abs(horizontal_input):
 			velocity.x += horizontal_input * delta * DECCELERATION
@@ -77,12 +81,21 @@ func _physics_process(delta: float) -> void:
 	
 	velocity = move_and_slide(velocity, Vector2.UP)
 	
-	#animation_tree["parameters/conditions/moving"] = abs(horizontal_input) != 0.0
-	#animation_tree["parameters/conditions/not_moving"] = abs(horizontal_input) == 0.0
+	
+	animation_tree["parameters/conditions/jump_up"] = velocity.y < 0
+	animation_tree["parameters/conditions/jump_down"] = velocity.y > 0
+	animation_tree["parameters/conditions/moving"] = abs(horizontal_input) != 0.0
+	animation_tree["parameters/conditions/not_moving"] = abs(horizontal_input) == 0.0
+	animation_tree["parameters/conditions/on_floor"] = is_on_floor()
 
 
 func can_jump():
 	return is_on_floor()
+	
+
+func transform() -> void:
+	state_machine.travel("transform")
+	transformed = true
 
 
 func _on_SoundTimer_timeout() -> void:
