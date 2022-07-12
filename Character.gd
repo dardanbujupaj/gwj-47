@@ -1,16 +1,16 @@
 extends KinematicBody2D
 
 
-const ACCELERATION = 2400
-const DECCELERATION = 4800
+const ACCELERATION = 1000
+const DECCELERATION = 2000
 
-const MAX_SPEED = 1000
+const MAX_SPEED = 250
 
-const JUMP_STRENGTH = 700
+const JUMP_STRENGTH = 300
 
-const JUMP_GRAVITY = 1500
-const RAISE_GRAVITY = 3000
-const FALL_GRAVITY = 4500
+const JUMP_GRAVITY = 500
+const RAISE_GRAVITY = 1500
+const FALL_GRAVITY = 3000
 
 
 var start_position: Vector2

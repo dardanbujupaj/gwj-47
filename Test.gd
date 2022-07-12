@@ -48,7 +48,7 @@ func switch_world() -> void:
 	
 	
 	var camera_pos = Vector2(640, 360) if down else Vector2(640, -360)
-	tween.interpolate_property($Camera2D, "position", $Camera2D.position, camera_pos, 0.5, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	tween.interpolate_property($Camera2D, "position", $Camera2D.position, camera_pos / 4, 0.5, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	
 	tween.start()
 	
