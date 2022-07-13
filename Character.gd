@@ -99,6 +99,9 @@ func can_jump():
 	return is_on_floor()
 	
 
+func play_animation(animation: String) -> void:
+	state_machine.travel(animation)
+
 func transform() -> void:
 	if transformed:
 		state_machine.travel("transform_back")

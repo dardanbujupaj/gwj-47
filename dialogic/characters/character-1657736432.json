@@ -1,0 +1,21 @@
+{
+	"color": "#ff95109c",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1657736432.json",
+	"mirror_portraits": false,
+	"name": "Fred",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": -40,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": ""
+		}
+	],
+	"scale": 1000,
+	"theme": ""
+}
