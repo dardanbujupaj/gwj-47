@@ -7,11 +7,9 @@ onready var lower_world = $LowerWorld
 
 onready var tween = $Tween
 
-onready var manifestation = $Manifestation
-
 var manifested_character = null
 
-var down = false
+var down = true
 
 
 func _ready() -> void:
