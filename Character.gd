@@ -1,16 +1,16 @@
 extends KinematicBody2D
 
 
-const ACCELERATION = 2400
-const DECCELERATION = 4800
+const ACCELERATION = 1200
+const DECCELERATION = 2400
 
-const MAX_SPEED = 1000
+const MAX_SPEED = 600
 
-const JUMP_STRENGTH = 1000
+const JUMP_STRENGTH = 800
 
-const JUMP_GRAVITY = 1000
-const RAISE_GRAVITY = 2000
-const FALL_GRAVITY = 4000
+const JUMP_GRAVITY = 1200
+const RAISE_GRAVITY = 1800
+const FALL_GRAVITY = 2400
 
 
 var start_position: Vector2
@@ -66,9 +66,13 @@ func _physics_process(delta: float) -> void:
 	if abs(horizontal_input) > 0:
 		$Character.flip_h = horizontal_input < 0
 		
-		if abs(velocity.x) != abs(horizontal_input):
+		if sign(velocity.x) != sign(horizontal_input):
 			velocity.x += horizontal_input * delta * DECCELERATION
-		velocity.x += horizontal_input * delta * ACCELERATION
+		
+		if is_on_floor():
+			velocity.x += horizontal_input * delta * ACCELERATION
+		else:
+			velocity.x += horizontal_input * delta * ACCELERATION / 2
 	else:
 		var decceleration = sign(velocity.x) * delta * DECCELERATION
 		if abs(velocity.x) < abs(decceleration):
@@ -90,7 +94,7 @@ func _physics_process(delta: float) -> void:
 	for i in range(get_slide_count()):
 		var collision = get_slide_collision(i)
 		
-		if collision.collider is StaticBody2D and collision.normal == -velocity.normalized().snapped(Vector2.ONE):
+		if collision.collider.has_method("move") and collision.normal == -velocity.normalized().snapped(Vector2.ONE):
 			collision.collider.move(velocity)
 	
 	velocity = new_velocity
