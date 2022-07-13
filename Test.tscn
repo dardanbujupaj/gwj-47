@@ -1,8 +1,7 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Character.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Test.gd" type="Script" id=3]
-[ext_resource path="res://Manifestation.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Untitled.png" type="Texture" id=6]
 [ext_resource path="res://Tileset_01.png" type="Texture" id=7]
 [ext_resource path="res://upper.wav" type="AudioStream" id=8]
@@ -214,9 +213,6 @@ position = Vector2( 960, 540 )
 current = true
 
 [node name="Tween" type="Tween" parent="."]
-
-[node name="Manifestation" parent="." instance=ExtResource( 4 )]
-position = Vector2( -237, -1 )
 
 [node name="MovableTile" parent="." instance=ExtResource( 10 )]
 position = Vector2( 984, -840 )
