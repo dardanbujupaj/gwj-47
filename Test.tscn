@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Character.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Test.gd" type="Script" id=3]
@@ -7,9 +7,6 @@
 [ext_resource path="res://upper.wav" type="AudioStream" id=8]
 [ext_resource path="res://lower.wav" type="AudioStream" id=9]
 [ext_resource path="res://MovableTile.tscn" type="PackedScene" id=10]
-
-[sub_resource type="ConvexPolygonShape2D" id=5]
-points = PoolVector2Array( 0, 0, 48, 0, 48, 48, 0, 48 )
 
 [sub_resource type="ConvexPolygonShape2D" id=6]
 points = PoolVector2Array( 0, 0, 48, 0, 48, 48, 0, 48 )
