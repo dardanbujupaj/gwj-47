@@ -11,7 +11,7 @@ onready var manifestation = $Manifestation
 
 var manifested_character = null
 
-var down = false
+var down = true
 
 
 func _ready() -> void:

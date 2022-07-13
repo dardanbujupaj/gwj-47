@@ -85,8 +85,15 @@ func _physics_process(delta: float) -> void:
 	#	$SoundTimer.stop()
 	
 	
-	velocity = move_and_slide(velocity, Vector2.UP)
+	var new_velocity = move_and_slide(velocity, Vector2.UP)
 	
+	for i in range(get_slide_count()):
+		var collision = get_slide_collision(i)
+		
+		if collision.collider is StaticBody2D and collision.normal == -velocity.normalized().snapped(Vector2.ONE):
+			collision.collider.move(velocity)
+	
+	velocity = new_velocity
 	
 	animation_tree["parameters/conditions/jump_up"] = velocity.y < 0
 	animation_tree["parameters/conditions/jump_down"] = velocity.y > 0
