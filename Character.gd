@@ -1,15 +1,15 @@
 extends KinematicBody2D
 
 
-const ACCELERATION = 1200
+const ACCELERATION = 1600
 const DECCELERATION = 2400
 
-const MAX_SPEED = 600
+const MAX_SPEED = 700
 
 const JUMP_STRENGTH = 800
 
-const JUMP_GRAVITY = 1200
-const RAISE_GRAVITY = 1800
+const JUMP_GRAVITY = 1400
+const RAISE_GRAVITY = 1600
 const FALL_GRAVITY = 2400
 
 
