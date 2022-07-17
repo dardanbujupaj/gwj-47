@@ -38,3 +38,8 @@ func switch_world() -> void:
 	tween.interpolate_property($Camera2D, "position", $Camera2D.position, camera_pos, 0.5, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	
 	tween.start()
+
+
+func _on_FinishArea_body_entered(body):
+	if $FinishArea.get_overlapping_bodies().size() == 2:
+		emit_signal("level_finished")

@@ -13,6 +13,8 @@ var current_level: Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	current_level = levels.get_child(0)
+	current_level.connect("level_finished", self, "_on_Test_level_finished")
+	
 	var camera = current_level.find_node("Camera2D", true)
 	camera.make_current()
 	
@@ -21,19 +23,13 @@ func _ready():
 			set_freeze(level, true)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if Input.is_action_just_pressed("next"):
-		var next_level = $Levels.get_child(current_level.get_index() + 1)
-		move_to(next_level)
-	if Input.is_action_just_pressed("previous"):
-		var next_level = $Levels.get_child(current_level.get_index() - 1)
-		move_to(next_level)
-
 
 func move_to(next_level: Node2D) -> void:
 	var current_camera = current_level.find_node("Camera2D", true)
 	var next_camera = next_level.find_node("Camera2D", true)
+	
+	current_level.disconnect("level_finished", self, "_on_Test_level_finished")
+	next_level.connect("level_finished", self, "_on_Test_level_finished")
 	
 	set_freeze(current_level, true)
 	

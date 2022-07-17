@@ -1,0 +1,21 @@
+{
+	"events": [
+		{
+			"character": "character-1657736432.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "What happened? Something has changed...\nLua where are you?"
+		},
+		{
+			"character": "character-1657736437.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I'm here! But somehow everything is upside down...\nThere's an exit, let's go there."
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.3",
+		"file": "timeline-1658079749.json",
+		"name": "Tutorial"
+	}
+}

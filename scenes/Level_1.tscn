@@ -7,7 +7,6 @@
 [ext_resource path="res://Assets/Character/Character2.png" type="Texture" id=5]
 [ext_resource path="res://scenes/Untitled.png" type="Texture" id=6]
 [ext_resource path="res://scenes/Tileset_01.png" type="Texture" id=7]
-[ext_resource path="res://scenes/MovableTile.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=6]
 points = PoolVector2Array( 0, 0, 48, 0, 48, 48, 0, 48 )
@@ -337,17 +336,14 @@ format = 1
 
 [node name="Character" parent="LowerWorld" instance=ExtResource( 2 )]
 position = Vector2( 142, 1033 )
-scale = Vector2( 1, -1 )
 texture = ExtResource( 5 )
+active = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 960, 540 )
 current = true
 
 [node name="Tween" type="Tween" parent="."]
-
-[node name="MovableTile" parent="." instance=ExtResource( 10 )]
-position = Vector2( 2246, -840 )
 
 [node name="Untitled" type="Sprite" parent="."]
 modulate = Color( 0.360784, 0.678431, 0.584314, 0.501961 )
