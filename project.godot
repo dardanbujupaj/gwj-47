@@ -99,7 +99,7 @@ _global_script_class_icons={
 [application]
 
 config/name="gwj-47"
-run/main_scene="res://scenes/Test.tscn"
+run/main_scene="res://scenes/Titlescreen.tscn"
 config/icon="res://scenes/icon.png"
 
 [autoload]
