@@ -47,7 +47,13 @@ func _on_FinishArea_body_entered(body):
 
 func _on_TransformTutorialArea_body_entered(body):
 	var dialog = Dialogic.start("TutorialTransform")
+	dialog.connect("dialogic_signal", self, "_on_Dialog_dialogic_signal")
 	add_child(dialog)
 	
 	
 
+
+
+func _on_Dialog_dialogic_signal(value):
+	if (value) == "press1":
+		$Label.visible = true

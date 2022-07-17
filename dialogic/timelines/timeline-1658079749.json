@@ -11,6 +11,10 @@
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "I'm here! But somehow everything is upside down...\nThere's an exit, let's go there."
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
 		}
 	],
 	"metadata": {

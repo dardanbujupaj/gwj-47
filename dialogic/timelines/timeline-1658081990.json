@@ -5,6 +5,14 @@
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "I can't get up here...\nCould lend me a hand Rossy?"
+		},
+		{
+			"emit_signal": "press1",
+			"event_id": "dialogic_040"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
 		}
 	],
 	"metadata": {
