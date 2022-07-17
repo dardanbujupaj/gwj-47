@@ -35,6 +35,15 @@ func switch_world() -> void:
 	
 	$LowerWorld/Character.active = down
 	$UpperWorld/Character.active = !down
+	
+	
+	var screen = Vector2(1920, 1080)
+	
+	var camera_pos = screen / 2 if down else screen / 2 * Vector2(1, -1)
+	
+	tween.interpolate_property($Camera2D, "position", $Camera2D.position, camera_pos, 0.5, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	
+	tween.start()
 
 
 
