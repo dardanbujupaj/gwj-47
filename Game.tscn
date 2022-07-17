@@ -17,7 +17,7 @@ position = Vector2( -1920, 0 )
 [node name="Level_1" parent="Levels" instance=ExtResource( 2 )]
 
 [node name="Level_2" parent="Levels" instance=ExtResource( 3 )]
-position = Vector2( 2887, -562 )
+position = Vector2( 2900, 0 )
 
 [node name="End" parent="Levels" instance=ExtResource( 5 )]
 position = Vector2( 3874, -421 )
