@@ -5,7 +5,7 @@
 [ext_resource path="res://scenes/Level_1.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Character/Character.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Character/Character2.png" type="Texture" id=5]
-[ext_resource path="res://scenes/Untitled.png" type="Texture" id=6]
+[ext_resource path="res://scenes/Untitled 4.png" type="Texture" id=6]
 [ext_resource path="res://scenes/Tileset_01.png" type="Texture" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=6]
@@ -347,14 +347,14 @@ current = true
 
 [node name="Untitled" type="Sprite" parent="."]
 modulate = Color( 0.360784, 0.678431, 0.584314, 0.501961 )
-position = Vector2( 960, -658 )
+position = Vector2( 958, -587 )
 scale = Vector2( 0.8, 0.8 )
 z_index = -1
 texture = ExtResource( 6 )
 
 [node name="Untitled2" type="Sprite" parent="."]
 modulate = Color( 1, 0.411765, 0.411765, 0.501961 )
-position = Vector2( 955, 665 )
+position = Vector2( 951, 562 )
 scale = Vector2( 0.8, -0.8 )
 z_index = -1
 texture = ExtResource( 6 )
