@@ -35,6 +35,7 @@ func move(direction: Vector2) -> bool:
 func _on_Area2D_area_entered(area):
 	if area.name.begins_with("Box"):
 		$CPUParticles2D.visible = false
+		$AudioStreamPlayer2D.play()
 
 
 func _on_Area2D_area_exited(area):
