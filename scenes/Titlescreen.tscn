@@ -1,0 +1,127 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/Buttons/button_options_hover.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Buttons/button_start_hover.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Buttons/button_start.png" type="Texture" id=3]
+[ext_resource path="res://Assets/titlescreen_background.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Buttons/button_options.png" type="Texture" id=5]
+[ext_resource path="res://Assets/snow_globe.png" type="Texture" id=6]
+[ext_resource path="res://scenes/Titlescreen.gd" type="Script" id=7]
+[ext_resource path="res://scenes/Transitionscreen.tscn" type="PackedScene" id=8]
+
+[sub_resource type="Animation" id=1]
+length = 1.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("SnowGlobe:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Rect2( 0, 0, 51, 150 ), Rect2( 51, 0, 51, 150 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SnowGlobe:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -179.5, 105 ), Vector2( -179.5, 105 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("SnowGlobe:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Rect2( 102, 0, 51, 150 ), Rect2( 153, 0, 51, 150 ), Rect2( 204, 0, 51, 150 ), Rect2( 255, 0, 51, 150 ), Rect2( 306, 0, 51, 150 ), Rect2( 357, 0, 51, 150 ), Rect2( 408, 0, 51, 150 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SnowGlobe:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -179.5, 105 ), Vector2( -179.5, 105 ), Vector2( -179.5, 105 ), Vector2( -179.5, 105 ), Vector2( -179.5, 105 ), Vector2( -179.5, 105 ), Vector2( -179.5, 105 ) ]
+}
+
+[node name="Titlescreen" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="TitlescreenBackground" type="Sprite" parent="."]
+position = Vector2( 960, 540 )
+texture = ExtResource( 4 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_right = 420.0
+margin_bottom = 226.0
+
+[node name="Start" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+margin_right = 420.0
+margin_bottom = 99.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+margin_top = 103.0
+margin_right = 420.0
+margin_bottom = 226.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SnowGlobe" type="Sprite" parent="."]
+position = Vector2( 950, 540 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 6 )
+offset = Vector2( -179.5, 105 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 51, 150 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/1 = SubResource( 1 )
+anims/2 = SubResource( 2 )
+
+[node name="Transitionscreen" parent="." instance=ExtResource( 8 )]
+
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Start" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Start" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Options" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_Options_pressed"]
