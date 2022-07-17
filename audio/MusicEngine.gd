@@ -1,8 +1,12 @@
 extends Node
 
+const CORRECTION = 0.25 # Music files are way too loud...
 
-# counter for switching between players
-var count = 0
+const FADE_DURATION = 1.0
+
+const MAX_VOLUME = linear2db(0.8 * CORRECTION)
+const MIXED_VOLUME = linear2db(0.5 * CORRECTION)
+const MIN_VOLUME = linear2db(0.2 * CORRECTION)
 
 var currently_playing: String
 
@@ -10,69 +14,71 @@ var currently_playing: String
 var players: Array
 
 # these are needed to interpolate the propertier in the right direction
-var active_player: AudioStreamPlayer
-var idle_player: AudioStreamPlayer
+var upper_player: AudioStreamPlayer
+var lower_player: AudioStreamPlayer
 
 # Tween for interpolating the volumes
 var tween: Tween
 
 
-
-
-# all available songs
-const songs = {
-	"Water": {
-		"stream": preload("res://audio/songs/WATER_Sea_Waves_Big_20sec_loop_stereo.wav"),
-		"volume": 0
-	}
-	
-}
-
-
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	# two players are needed for blending between songs
-	for i in range(2):
-		var player = AudioStreamPlayer.new()
-		player.bus = "Music"
-		players.append(player)
-		add_child(player)
+	upper_player = create_player()
+	upper_player.stream = preload("res://audio/songs/upper.wav")
+	lower_player = create_player()
+	lower_player.stream = preload("res://audio/songs/lower.wav")
+	
+	lower_player.play()
+	upper_player.play()
 	
 	tween = Tween.new()
 	add_child(tween)
 
+func _process(delta):
+	if Input.is_action_just_pressed("up"):
+		play_upper()
+	if Input.is_action_just_pressed("down"):
+		play_lower()
+	if Input.is_action_just_pressed("left"):
+		play_equal()
 
-# Play next song, fade volumes between songs
-func play_song(song_name: String, transition: float = 2.0):
-	if currently_playing == song_name:
-		return
+
+func create_player() -> AudioStreamPlayer:
+	var player = AudioStreamPlayer.new()
+	player.volume_db = MIXED_VOLUME
+	player.bus = "Music"
+	players.append(player)
+	add_child(player)
 	
-	currently_playing = song_name
-	
+	return player
+
+
+
+func play_upper() -> void:
+	_fade(MIN_VOLUME, MAX_VOLUME)
+func play_lower() -> void:
+	_fade(MAX_VOLUME, MIN_VOLUME)
+func play_equal() -> void:
+	_fade(MIXED_VOLUME, MIXED_VOLUME)
+
+
+
+func _fade(lower_volume: float, upper_volume: float) -> void:
 	tween.stop_all()
-	print("Switching to song %s" % song_name)
-	
-	# determine currently running player
-	active_player = players[count % 2]
-	idle_player = players[1 - count % 2]
-	count += 1
-	
-	var song = songs[song_name]
-	idle_player.stream = song["stream"]
-	idle_player.volume_db = linear2db(0) # begin with 0 and fade to volume
-	idle_player.play()
-	
-	tween.interpolate_method(self, "set_active_player_volume", db2linear(active_player.volume_db), 0, transition)
-	tween.interpolate_method(self, "set_idle_player_volume", db2linear(idle_player.volume_db), db2linear(song["volume"]), transition)
-	
-	tween.interpolate_callback(active_player, transition, "stop")
+	tween.interpolate_property(
+		lower_player,
+		"volume_db",
+		lower_player.volume_db,
+		lower_volume,
+		FADE_DURATION
+	)
+	tween.interpolate_property(
+		upper_player,
+		"volume_db",
+		upper_player.volume_db,
+		upper_volume,
+		FADE_DURATION
+	)
 	tween.start()
-
-
-func set_active_player_volume(new_volume: float):
-	active_player.volume_db = linear2db(new_volume)
-
-
-func set_idle_player_volume(new_volume: float):
-	idle_player.volume_db = linear2db(new_volume)
