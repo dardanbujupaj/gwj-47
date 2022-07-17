@@ -58,27 +58,6 @@ func _on_MovableTile2_box_out():
 	box -= 1
 	check_boxes()
 
-func _on_MovableTile3_box_in():
-	box += 1
-	check_boxes()
-
-
-
-func _on_MovableTile3_box_out():
-	box -= 1
-	check_boxes()
-
-
-func _on_MovableTile4_box_in():
-	pass # Replace with function body.
-	box += 1
-	check_boxes()
-
-
-func _on_MovableTile4_box_out():
-	box -= 1
-	check_boxes()
-
 
 
 func check_boxes():
