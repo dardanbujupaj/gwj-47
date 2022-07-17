@@ -15,7 +15,7 @@ func transitioned():
 
 
 func _on_Options_pressed():
-	get_tree().change_scene("res://scenes/settings_menu/SettingsMenu.tscn")
+	get_tree().change_scene("res://scenes/Settings.tscn")
 
 
 func _on_button_mouse_entered():

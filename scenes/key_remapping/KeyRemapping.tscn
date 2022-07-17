@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scenes/settings/key_remapping/KeyRemapping.gd" type="Script" id=1]
+[ext_resource path="res://scenes/key_remapping/KeyRemapping.gd" type="Script" id=1]
 [ext_resource path="res://default_theme.tres" type="Theme" id=3]
 
 [node name="KeyRemapping" type="PopupPanel"]

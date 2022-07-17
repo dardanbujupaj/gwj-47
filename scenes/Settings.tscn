@@ -1,0 +1,116 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/settings_menu/SettingsMenu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/key_remapping/ActionListItem.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Settings.gd" type="Script" id=3]
+
+[node name="Settings" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 1920.0
+margin_bottom = 20.0
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+margin_right = 42.0
+margin_bottom = 20.0
+text = "Back"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_top = 24.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+margin_left = 672.0
+margin_top = 385.0
+margin_right = 1248.0
+margin_bottom = 671.0
+
+[node name="SettingsMenu" parent="CenterContainer/HBoxContainer" instance=ExtResource( 1 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 272.0
+margin_bottom = 286.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+margin_left = 276.0
+margin_right = 576.0
+margin_bottom = 286.0
+rect_min_size = Vector2( 300, 0 )
+
+[node name="Keymap" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+margin_right = 300.0
+margin_bottom = 14.0
+
+[node name="Left" parent="CenterContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 2 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 18.0
+margin_right = 300.0
+margin_bottom = 38.0
+text = "Left"
+action = "left"
+
+[node name="Right" parent="CenterContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 2 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 42.0
+margin_right = 300.0
+margin_bottom = 62.0
+text = "Right"
+action = "right"
+
+[node name="Jump" parent="CenterContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 2 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 66.0
+margin_right = 300.0
+margin_bottom = 86.0
+text = "Jump"
+action = "jump"
+
+[node name="SwitchCharacter" parent="CenterContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 2 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 90.0
+margin_right = 300.0
+margin_bottom = 110.0
+text = "Switch Character"
+action = "switch"
+
+[node name="Transform" parent="CenterContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 2 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 114.0
+margin_right = 300.0
+margin_bottom = 134.0
+text = "Transform"
+action = "transform"
+
+[connection signal="mouse_entered" from="HBoxContainer/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]
