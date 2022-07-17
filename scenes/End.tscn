@@ -28,3 +28,6 @@ theme = SubResource( 2 )
 text = "Thanks for playing!
 You saved the world of Bobby and Rossy."
 align = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
