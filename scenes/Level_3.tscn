@@ -475,7 +475,6 @@ tile_data = PoolIntArray( -1507328, 6, 65540, -1507327, 6, 196609, -1507326, 6, 
 [node name="Character" parent="UpperWorld" instance=ExtResource( 2 )]
 position = Vector2( 131, -119.003 )
 texture = ExtResource( 4 )
-vertical_level = true
 
 [node name="LowerWorld" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
@@ -486,7 +485,6 @@ format = 1
 [node name="Character" parent="LowerWorld" instance=ExtResource( 2 )]
 position = Vector2( 142, 1033 )
 texture = ExtResource( 5 )
-vertical_level = true
 active = true
 
 [node name="Camera2D" type="Camera2D" parent="."]

@@ -13,8 +13,6 @@ var down = true
 
 
 func _ready() -> void:
-	$LowerWorld/Character.vertical_level = true
-	$UpperWorld/Character.vertical_level = true
 	switch_world()
 
 
