@@ -1,6 +1,7 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://scenes/Character.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Character/Character.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Soundeffects/jump.wav" type="AudioStream" id=3]
 [ext_resource path="res://Assets/Soundeffects/land.wav" type="AudioStream" id=4]
 [ext_resource path="res://Assets/Dialogic_sprite_1.png" type="Texture" id=5]
@@ -448,7 +449,7 @@ states/transform_back/node = SubResource( 23 )
 states/transform_back/position = Vector2( 1039, 451 )
 transitions = [ "idle", "run_start", SubResource( 24 ), "run_start", "run", SubResource( 25 ), "run", "run_end", SubResource( 26 ), "run_end", "idle", SubResource( 27 ), "jump_up", "jump_down", SubResource( 30 ), "jump_down", "jump_end", SubResource( 31 ), "jump_end", "idle", SubResource( 32 ), "idle", "transform", SubResource( 33 ), "transform", "transform_back", SubResource( 34 ), "transform_back", "idle", SubResource( 35 ), "run", "jump_up", SubResource( 39 ), "idle", "jump_up", SubResource( 40 ), "jump_up", "transform", SubResource( 41 ), "jump_down", "transform", SubResource( 42 ), "run", "transform", SubResource( 43 ) ]
 start_node = "idle"
-graph_offset = Vector2( 79.8305, -1.58234 )
+graph_offset = Vector2( 244.583, 196.598 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=38]
 
@@ -463,10 +464,10 @@ shape = SubResource( 3 )
 [node name="Character" type="Sprite" parent="."]
 position = Vector2( 24, -24 )
 scale = Vector2( 3, 3 )
-texture = ExtResource( 5 )
+texture = ExtResource( 2 )
 offset = Vector2( -8.5, 8 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 41, 18 )
+region_rect = Rect2( 82, 0, 41, 18 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/idle = SubResource( 4 )

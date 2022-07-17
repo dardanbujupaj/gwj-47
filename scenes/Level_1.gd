@@ -1,7 +1,6 @@
 extends Node2D
 signal level_finished
 
-
 onready var upper_world = $UpperWorld
 onready var lower_world = $LowerWorld
 
@@ -9,7 +8,7 @@ onready var lower_world = $LowerWorld
 onready var tween = $Tween
 
 
-var down = false
+var down = true
 
 
 func _unhandled_input(event):
@@ -39,15 +38,6 @@ func switch_world() -> void:
 	
 	tween.start()
 
-
-func _on_FinishArea_body_entered(body):
-	if $FinishArea.get_overlapping_bodies().size() == 2:
+func _on_Exit_body_entered(body: Node2D):
+	if body.name.begins_with("Character"):
 		emit_signal("level_finished")
-
-
-func _on_TransformTutorialArea_body_entered(body):
-	var dialog = Dialogic.start("TutorialTransform")
-	add_child(dialog)
-	
-	
-
