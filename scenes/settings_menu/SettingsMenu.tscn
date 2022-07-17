@@ -47,16 +47,16 @@ margin_bottom = 56.0
 
 [node name="Title" type="Label" parent="VBoxContainer/HBoxContainer2"]
 margin_top = 3.0
-margin_right = 62.0
+margin_right = 116.0
 margin_bottom = 22.0
 size_flags_horizontal = 3
 text = "Font"
 
 [node name="Font" type="OptionButton" parent="VBoxContainer/HBoxContainer2"]
-margin_left = 66.0
+margin_left = 120.0
 margin_right = 258.0
 margin_bottom = 25.0
-text = "ChelseaMarket-Regular"
+text = "Roboto-Regular"
 items = [ "Roboto-Regular", null, false, 1, null, "Roboto-Bold", null, false, 2, null ]
 selected = 0
 __meta__ = {
@@ -210,5 +210,5 @@ text = "Close"
 [connection signal="value_changed" from="VBoxContainer/SoundVolume/Sound" to="." method="_on_Sound_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/Screenshake/Screenshake" to="." method="_on_Screenshake_value_changed"]
 [connection signal="mouse_entered" from="VBoxContainer/Close" to="." method="_on_Button_mouse_entered"]
-[connection signal="pressed" from="VBoxContainer/Close" to="." method="_on_Close_pressed"]
 [connection signal="pressed" from="VBoxContainer/Close" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Close" to="." method="_on_Close_pressed"]

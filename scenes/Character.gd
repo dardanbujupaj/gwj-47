@@ -18,7 +18,7 @@ var start_position: Vector2
 var velocity: Vector2
 
 
-var active: bool = false
+export var active: bool = false
 
 var transformed = false
 var manifestation: Node2D
