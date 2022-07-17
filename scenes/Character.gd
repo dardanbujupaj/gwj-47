@@ -1,6 +1,9 @@
 extends KinematicBody2D
 
 
+export(Texture) var texture = preload("res://Assets/Character/Character.png") setget _set_texture
+
+
 const ACCELERATION = 1600
 const DECCELERATION = 2400
 
@@ -19,7 +22,7 @@ var start_position: Vector2
 var velocity: Vector2
 
 
-export var active: bool = false
+export var active: bool = false setget _set_active
 
 var transformed = false
 var manifestation: Node2D
@@ -28,6 +31,8 @@ onready var animation_tree := $AnimationTree
 onready var state_machine := $AnimationTree["parameters/playback"] as AnimationNodeStateMachinePlayback
 
 #onready var hit_area = $HitArea
+
+
 
 
 var sounds = {
@@ -45,22 +50,19 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	if not active:
-		return
-	
-	if Input.is_action_just_pressed("transform"):
+	if active and Input.is_action_just_pressed("transform"):
 		transform()
 	
 	if transformed:
 		return
 	
-	if can_jump():
+	if active and can_jump():
 		if Input.is_action_just_pressed("up"):
 			velocity.y -= JUMP_STRENGTH
 	
 	if velocity.y < 0:
 		
-		if Input.is_action_pressed("up"):
+		if active and Input.is_action_pressed("up"):
 			velocity.y += JUMP_GRAVITY * delta
 		else:
 			velocity.y += RAISE_GRAVITY * delta
@@ -68,7 +70,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y += FALL_GRAVITY * delta
 	
 	
-	var horizontal_input := Input.get_action_strength("right") - Input.get_action_strength("left")
+	var horizontal_input := (Input.get_action_strength("right") - Input.get_action_strength("left") if active else 0.0)
 	
 	
 	if abs(horizontal_input) > 0:
@@ -107,8 +109,8 @@ func _physics_process(delta: float) -> void:
 	
 	velocity = new_velocity
 	
-	animation_tree["parameters/conditions/jump_up"] = velocity.y < 0
 	animation_tree["parameters/conditions/jump_down"] = velocity.y > 0
+	animation_tree["parameters/conditions/jump_up"] = velocity.y < 0
 	animation_tree["parameters/conditions/moving"] = abs(horizontal_input) != 0.0
 	animation_tree["parameters/conditions/not_moving"] = abs(horizontal_input) == 0.0
 	animation_tree["parameters/conditions/on_floor"] = is_on_floor()
@@ -138,7 +140,7 @@ func transform() -> void:
 		transformed = true
 		velocity = Vector2()
 		manifestation = preload("res://scenes/Manifestation.tscn").instance()
-		add_child(manifestation)
+		get_parent().add_child(manifestation)
 		if vertical_level == false:
 			manifestation.global_position = global_position * Vector2(1, -1)
 		if vertical_level == true:
@@ -149,3 +151,21 @@ func _on_SoundTimer_timeout() -> void:
 	$SoundTimer.wait_time = rand_range(0.1, 0.2)
 	$AudioStreamPlayer2D.pitch_scale = 1.0 + rand_range(-0.2, 0.2)
 	$AudioStreamPlayer2D.play()
+
+
+
+
+
+func _set_active(new_active: bool) -> void:
+	active = new_active
+	if new_active:
+		$Tween.stop_all()
+		$Tween.interpolate_property(self, "scale", scale, Vector2.ONE * 1.2, 0.1, Tween.TRANS_QUAD, Tween.EASE_OUT)
+		$Tween.interpolate_property(self, "scale", Vector2.ONE * 1.2, Vector2.ONE, 0.1, Tween.TRANS_QUAD, Tween.EASE_IN, 0.1)
+		$Tween.start()
+
+
+func _set_texture(new_texture: Texture) -> void:
+	texture = new_texture
+	if has_node("Character"):
+		$Character.texture = new_texture

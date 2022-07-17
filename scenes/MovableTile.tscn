@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/MovableTile.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Box.png" type="Texture" id=2]
+[ext_resource path="res://audio/effects/UI_Click_Distinct_mono.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 24 )
@@ -39,6 +40,9 @@ gravity = Vector2( 0, 0 )
 initial_velocity = 10.0
 radial_accel = 10.0
 scale_amount_curve = SubResource( 3 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]
