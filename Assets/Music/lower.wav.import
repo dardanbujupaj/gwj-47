@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/lower.wav-9ea7452378c9a6c9828512d79df07e5a.sample"
+
+[deps]
+
+source_file="res://Assets/Music/lower.wav"
+dest_files=[ "res://.import/lower.wav-9ea7452378c9a6c9828512d79df07e5a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0
