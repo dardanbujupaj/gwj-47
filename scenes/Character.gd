@@ -142,9 +142,9 @@ func transform() -> void:
 		manifestation = preload("res://scenes/Manifestation.tscn").instance()
 		get_parent().add_child(manifestation)
 		if vertical_level == false:
-			manifestation.global_position = global_position * Vector2(1, -1)
+			manifestation.position = position * Vector2(1, -1)
 		if vertical_level == true:
-			manifestation.global_position = global_position * Vector2(-1, 1)
+			manifestation.position = position * Vector2(-1, 1)
 
 
 func _on_SoundTimer_timeout() -> void:
