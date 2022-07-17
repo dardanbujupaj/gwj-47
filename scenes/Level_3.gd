@@ -68,7 +68,7 @@ func _on_MovableTile2_box_out():
 
 
 func check_boxes():
-	if box == 4:
+	if box == 2:
 		print("finished")
 		emit_signal("level_finished")
 
