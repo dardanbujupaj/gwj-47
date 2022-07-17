@@ -1,4 +1,3 @@
-tool
 extends Node2D
 
 export(float) var radius := 10.0
@@ -23,8 +22,9 @@ func _process(delta: float) -> void:
 
 
 func _draw() -> void:
-	draw_circle(Vector2(), radius, Color.white)
-	draw_circle(eye_position, radius / 2, Color.black)
+	if Settings.googly_eyes:
+		draw_circle(Vector2(), radius, Color.white)
+		draw_circle(eye_position, radius / 2, Color.black)
 
 
 func blink() -> void:
