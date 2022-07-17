@@ -1,12 +1,10 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://scenes/Level_2.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Character.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Tilemaps/Tileset_02.png" type="Texture" id=3]
 [ext_resource path="res://scenes/Untitled.png" type="Texture" id=6]
 [ext_resource path="res://scenes/Tileset_01.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Music/upper.wav" type="AudioStream" id=8]
-[ext_resource path="res://Assets/Music/lower.wav" type="AudioStream" id=9]
 [ext_resource path="res://scenes/MovableTile.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=6]
@@ -325,12 +323,6 @@ tile_data = PoolIntArray( 65516, 5, 65540, 65517, 5, 196609, 65518, 5, 196609, 6
 [node name="Character" parent="UpperWorld" instance=ExtResource( 2 )]
 position = Vector2( -100, 950 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UpperWorld"]
-stream = ExtResource( 8 )
-volume_db = -10.0
-autoplay = true
-bus = "Music"
-
 [node name="LowerWorld" type="TileMap" parent="."]
 scale = Vector2( 1, -1 )
 tile_set = SubResource( 1 )
@@ -342,12 +334,6 @@ tile_data = PoolIntArray( -589840, 3, 0, 851981, 3, 0, 851982, 3, 0, 851983, 3, 
 [node name="Character" parent="LowerWorld" instance=ExtResource( 2 )]
 position = Vector2( 100, -950 )
 scale = Vector2( 1, -1 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="LowerWorld"]
-stream = ExtResource( 9 )
-volume_db = -10.0
-autoplay = true
-bus = "Music"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0, 540 )
