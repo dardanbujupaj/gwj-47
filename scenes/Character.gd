@@ -12,6 +12,7 @@ const JUMP_GRAVITY = 1400
 const RAISE_GRAVITY = 1600
 const FALL_GRAVITY = 2400
 
+export var vertical_level = false 
 
 var start_position: Vector2
 
@@ -138,7 +139,10 @@ func transform() -> void:
 		velocity = Vector2()
 		manifestation = preload("res://scenes/Manifestation.tscn").instance()
 		add_child(manifestation)
-		manifestation.global_position = global_position * Vector2(1, -1)
+		if vertical_level == false:
+			manifestation.global_position = global_position * Vector2(1, -1)
+		if vertical_level == true:
+			manifestation.global_position = global_position * Vector2(-1, 1)
 
 
 func _on_SoundTimer_timeout() -> void:
