@@ -30,3 +30,13 @@ func move(direction: Vector2) -> bool:
 		tween.interpolate_property(self, "position", position, target, MOVE_DURATION, Tween.TRANS_QUAD, Tween.EASE_OUT)
 		tween.start()
 		return true
+
+
+func _on_Area2D_area_entered(area):
+	if area.name.begins_with("Box"):
+		$CPUParticles2D.visible = false
+
+
+func _on_Area2D_area_exited(area):
+	if area.name.begins_with("Box"):
+		$CPUParticles2D.visible = true
