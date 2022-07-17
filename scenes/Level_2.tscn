@@ -355,6 +355,15 @@ current = true
 [node name="BoxArea" parent="." instance=ExtResource( 4 )]
 position = Vector2( 360, 984 )
 
+[node name="BoxArea2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 747, 456 )
+
+[node name="BoxArea3" parent="." instance=ExtResource( 4 )]
+position = Vector2( -888, 888 )
+
+[node name="BoxArea4" parent="." instance=ExtResource( 4 )]
+position = Vector2( -216, 744 )
+
 [node name="MovableTile" parent="." instance=ExtResource( 10 )]
 position = Vector2( 360, 552 )
 
@@ -381,3 +390,14 @@ scale = Vector2( 0.55, 0.55 )
 z_index = -1
 texture = ExtResource( 5 )
 flip_h = true
+
+[connection signal="body_entered" from="BoxArea" to="." method="_on_BoxArea_body_entered"]
+[connection signal="body_entered" from="BoxArea2" to="." method="_on_BoxArea2_body_entered"]
+[connection signal="box_in" from="MovableTile" to="." method="_on_MovableTile_box_in"]
+[connection signal="box_out" from="MovableTile" to="." method="_on_MovableTile_box_out"]
+[connection signal="box_in" from="MovableTile2" to="." method="_on_MovableTile2_box_in"]
+[connection signal="box_out" from="MovableTile2" to="." method="_on_MovableTile2_box_out"]
+[connection signal="box_in" from="MovableTile3" to="." method="_on_MovableTile3_box_in"]
+[connection signal="box_out" from="MovableTile3" to="." method="_on_MovableTile3_box_out"]
+[connection signal="box_in" from="MovableTile4" to="." method="_on_MovableTile4_box_in"]
+[connection signal="box_out" from="MovableTile4" to="." method="_on_MovableTile4_box_out"]

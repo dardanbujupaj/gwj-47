@@ -1,5 +1,6 @@
 extends StaticBody2D
-
+signal box_in
+signal box_out
 
 const TILE_SIZE = 48
 const TILE_VECTOR = Vector2.ONE * TILE_SIZE
@@ -34,10 +35,12 @@ func move(direction: Vector2) -> bool:
 
 func _on_Area2D_area_entered(area):
 	if area.name.begins_with("Box"):
+		emit_signal("box_in")
 		$CPUParticles2D.visible = false
 		$AudioStreamPlayer2D.play()
 
 
 func _on_Area2D_area_exited(area):
 	if area.name.begins_with("Box"):
+		emit_signal("box_out")
 		$CPUParticles2D.visible = true
