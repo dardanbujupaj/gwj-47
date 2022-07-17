@@ -12,7 +12,7 @@ var current_level: Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	current_level = $Levels/Test
+	current_level = levels.get_child(0)
 	var camera = current_level.find_node("Camera2D", true)
 	camera.make_current()
 	

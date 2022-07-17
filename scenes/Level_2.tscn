@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/Level_2.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Character.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Tilemaps/Tileset_02.png" type="Texture" id=3]
-[ext_resource path="res://scenes/Untitled.png" type="Texture" id=6]
+[ext_resource path="res://scenes/Untitled 1.png" type="Texture" id=4]
 [ext_resource path="res://scenes/Tileset_01.png" type="Texture" id=7]
 [ext_resource path="res://scenes/MovableTile.tscn" type="PackedScene" id=10]
 
@@ -355,15 +355,15 @@ position = Vector2( -216, 216 )
 
 [node name="Untitled" type="Sprite" parent="."]
 modulate = Color( 0.360784, 0.678431, 0.584314, 0.501961 )
-position = Vector2( -950, 665 )
-scale = Vector2( 0.8, 0.8 )
+position = Vector2( -476, 424 )
+scale = Vector2( 0.55, 0.55 )
 z_index = -1
-texture = ExtResource( 6 )
+texture = ExtResource( 4 )
 
 [node name="Untitled2" type="Sprite" parent="."]
 modulate = Color( 1, 0.411765, 0.411765, 0.501961 )
-position = Vector2( 950, 665 )
-scale = Vector2( 0.8, 0.8 )
+position = Vector2( 476, 420 )
+scale = Vector2( 0.55, 0.55 )
 z_index = -1
-texture = ExtResource( 6 )
+texture = ExtResource( 4 )
 flip_h = true

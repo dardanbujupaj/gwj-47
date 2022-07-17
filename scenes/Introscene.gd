@@ -22,4 +22,4 @@ func _on_Dialog_dialogic_signal(value):
 		$Transitionscreen.transition()
 
 func transitioned():
-	get_tree().change_scene("res://Test.tscn")
+	get_tree().change_scene("res://Game.tscn")
