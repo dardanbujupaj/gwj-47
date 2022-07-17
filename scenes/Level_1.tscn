@@ -1,12 +1,10 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Assets/Tilemaps/Tileset_01.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Character.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Test.gd" type="Script" id=3]
 [ext_resource path="res://scenes/Untitled.png" type="Texture" id=6]
 [ext_resource path="res://scenes/Tileset_01.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Music/upper.wav" type="AudioStream" id=8]
-[ext_resource path="res://Assets/Music/lower.wav" type="AudioStream" id=9]
 [ext_resource path="res://scenes/MovableTile.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=6]
@@ -312,7 +310,7 @@ points = PoolVector2Array( 0, 0, 48, 0, 48, 48, 0, 48 )
 } ]
 5/z_index = 0
 
-[node name="Test" type="Node2D"]
+[node name="Level_1" type="Node2D"]
 script = ExtResource( 3 )
 
 [node name="UpperWorld" type="TileMap" parent="."]
@@ -325,12 +323,6 @@ tile_data = PoolIntArray( -1507328, 5, 65540, -1507327, 5, 196609, -1507326, 5, 
 [node name="Character" parent="UpperWorld" instance=ExtResource( 2 )]
 position = Vector2( 215, -108 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UpperWorld"]
-stream = ExtResource( 8 )
-volume_db = -10.0
-autoplay = true
-bus = "Music"
-
 [node name="LowerWorld" type="TileMap" parent="."]
 scale = Vector2( 1, -1 )
 tile_set = SubResource( 1 )
@@ -341,12 +333,6 @@ format = 1
 [node name="Character" parent="LowerWorld" instance=ExtResource( 2 )]
 position = Vector2( 197, -777 )
 scale = Vector2( 1, -1 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="LowerWorld"]
-stream = ExtResource( 9 )
-volume_db = -10.0
-autoplay = true
-bus = "Music"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 960, 540 )
