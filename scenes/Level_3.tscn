@@ -520,3 +520,5 @@ texture = ExtResource( 3 )
 
 [connection signal="box_in" from="MovableTile" to="." method="_on_MovableTile_box_in"]
 [connection signal="box_out" from="MovableTile" to="." method="_on_MovableTile_box_out"]
+[connection signal="box_in" from="MovableTile2" to="." method="_on_MovableTile2_box_in"]
+[connection signal="box_out" from="MovableTile2" to="." method="_on_MovableTile2_box_out"]
