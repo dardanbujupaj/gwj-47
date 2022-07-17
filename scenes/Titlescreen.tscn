@@ -120,8 +120,8 @@ anims/2 = SubResource( 2 )
 [node name="Transitionscreen" parent="." instance=ExtResource( 8 )]
 
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Start" to="." method="_on_button_mouse_entered"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Start" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Start" to="." method="_on_button_pressed"]
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Options" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_Options_pressed"]
