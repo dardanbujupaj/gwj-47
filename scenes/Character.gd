@@ -122,9 +122,9 @@ func play_animation(animation: String) -> void:
 
 
 func play_sound(sound: String) -> void:
-	$AudioStreamPlayer2D.stream = sounds[sound]
-	$AudioStreamPlayer2D.play()
-
+	if not ($AudioStreamPlayer2D.is_playing() and $AudioStreamPlayer2D.stream == sounds[sound]):
+		$AudioStreamPlayer2D.stream = sounds[sound]
+		$AudioStreamPlayer2D.play()
 
 func transform() -> void:
 	if transformed:
