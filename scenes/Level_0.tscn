@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Assets/Tilemaps/Tileset_01.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Character.tscn" type="PackedScene" id=2]
@@ -319,6 +319,9 @@ extents = Vector2( 10, 600 )
 [sub_resource type="RectangleShape2D" id=33]
 extents = Vector2( 100, 600 )
 
+[sub_resource type="RectangleShape2D" id=34]
+extents = Vector2( 64, 64 )
+
 [node name="Level_0" type="Node2D"]
 script = ExtResource( 3 )
 
@@ -389,7 +392,16 @@ margin_right = 51.0
 margin_bottom = 417.0
 timeline = "timeline-1658079749.json"
 
-[node name="BoxArea" parent="Dialog" instance=ExtResource( 9 )]
-position = Vector2( 1653, -172 )
+[node name="BoxArea" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1704, 245 )
+
+[node name="TransformTutorialArea" type="Area2D" parent="."]
+position = Vector2( 1658, -362 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransformTutorialArea"]
+shape = SubResource( 34 )
 
 [connection signal="body_entered" from="FinishArea" to="." method="_on_FinishArea_body_entered"]
+[connection signal="body_entered" from="TransformTutorialArea" to="." method="_on_TransformTutorialArea_body_entered" flags=6]

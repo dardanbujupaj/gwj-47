@@ -1,0 +1,15 @@
+{
+	"events": [
+		{
+			"character": "character-1657736432.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I can't get up here...\nCould lend me a hand Rossy?"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.3",
+		"file": "timeline-1658081990.json",
+		"name": "TutorialTransform"
+	}
+}

@@ -4,7 +4,7 @@
 			"character": "character-1657736432.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Hey Lua, come here and look at the great view."
+			"text": "Hey Rossy, come here and look at the great view."
 		},
 		{
 			"emit_signal": "move",

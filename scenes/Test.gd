@@ -43,3 +43,11 @@ func switch_world() -> void:
 func _on_FinishArea_body_entered(body):
 	if $FinishArea.get_overlapping_bodies().size() == 2:
 		emit_signal("level_finished")
+
+
+func _on_TransformTutorialArea_body_entered(body):
+	var dialog = Dialogic.start("TutorialTransform")
+	add_child(dialog)
+	
+	
+
